@@ -30,8 +30,8 @@ public class FloatingPointRepresentation {
 
     public void convertToFloat() {
         int radix = radix();
-        radix++;
         float val = 0;
+        System.out.println(radix);
         ArrayList<Integer> manArray = new ArrayList<Integer>();
         manArray.add(1);
         for(int i = 0; i<mantissa.length(); i++) {
@@ -42,25 +42,28 @@ public class FloatingPointRepresentation {
                 manArray.add(0);
             }
         }
+
+        System.out.println(manArray);
         if(radix<0) {
-            for(int i = 0; i<radix; i++) {
+            for(int i = 0; i>radix; i--) {
                 manArray.add(0,0);
             }
         }
         else if(radix>0) {
             if(radix>=mantissa.length()) {
-                for(int i = 0; i<(radix-mantissa.length()+1); i++) {
+                for(int i = 0; i<(radix-mantissa.length()); i++) {
                     manArray.add(0);
                 }
             }
         }
-
+        System.out.println(manArray);
         for (int i = 0; i < manArray.size(); i++) {
+            System.out.println(radix-i);
             val += (Math.pow(2, radix - i));
         }
     }
     public static void main(String[] args) {
         FloatingPointRepresentation test = new FloatingPointRepresentation("0","111","0000",2);
-        test.radix();
+        test.convertToFloat();
     }
 }
