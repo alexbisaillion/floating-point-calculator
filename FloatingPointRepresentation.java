@@ -28,10 +28,9 @@ public class FloatingPointRepresentation {
         return expVal;
     }
 
-    public void convertToFloat() {
+    public float convertToFloat() {
         int radix = radix();
         float val = 0;
-        System.out.println(radix);
         ArrayList<Integer> manArray = new ArrayList<Integer>();
         manArray.add(1);
         for(int i = 0; i<mantissa.length(); i++) {
@@ -42,8 +41,6 @@ public class FloatingPointRepresentation {
                 manArray.add(0);
             }
         }
-
-        System.out.println(manArray);
         if(radix<0) {
             for(int i = 0; i>radix; i--) {
                 manArray.add(0,0);
@@ -56,14 +53,19 @@ public class FloatingPointRepresentation {
                 }
             }
         }
-        System.out.println(manArray);
+
         for (int i = 0; i < manArray.size(); i++) {
-            System.out.println(radix-i);
-            val += (Math.pow(2, radix - i));
+            if(manArray.get(i)==1) {
+                val += (Math.pow(2, radix - i));
+            }
         }
+        if(signBit.charAt(0)=='1') {
+            val=0-val;
+        }
+        return val;
     }
     public static void main(String[] args) {
-        FloatingPointRepresentation test = new FloatingPointRepresentation("0","111","0000",2);
-        test.convertToFloat();
+        FloatingPointRepresentation test = new FloatingPointRepresentation("1","110","1010",3);
+        System.out.println(test.convertToFloat());
     }
 }
