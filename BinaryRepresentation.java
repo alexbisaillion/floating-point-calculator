@@ -3,13 +3,13 @@ import java.util.ArrayList;
 /**
  * Created by abisa on 12/29/2017.
  */
-public class FloatingPointRepresentation {
+public class BinaryRepresentation {
     public String signBit;
     public String exponent;
     public String mantissa;
     public int excess;
 
-    public FloatingPointRepresentation(String sb, String exp, String man, int exc) {
+    public BinaryRepresentation(String sb, String exp, String man, int exc) {
         signBit=sb;
         exponent=exp;
         mantissa=man;
@@ -28,9 +28,7 @@ public class FloatingPointRepresentation {
         return expVal;
     }
 
-    public float convertToFloat() {
-        int radix = radix();
-        float val = 0;
+    public ArrayList<Integer> buildMantissa() {
         ArrayList<Integer> manArray = new ArrayList<Integer>();
         manArray.add(1);
         for(int i = 0; i<mantissa.length(); i++) {
@@ -41,6 +39,10 @@ public class FloatingPointRepresentation {
                 manArray.add(0);
             }
         }
+        return manArray;
+    }
+
+    public ArrayList<Integer> adjustMantissa(ArrayList<Integer> manArray, int radix) {
         if(radix<0) {
             for(int i = 0; i>radix; i--) {
                 manArray.add(0,0);
@@ -53,19 +55,27 @@ public class FloatingPointRepresentation {
                 }
             }
         }
+        return manArray;
+    }
+
+    public float convertToFloat() {
+        float value = 0;
+        int radix = radix();
+        ArrayList<Integer> manArray = buildMantissa();
+        manArray=adjustMantissa(manArray,radix);
 
         for (int i = 0; i < manArray.size(); i++) {
             if(manArray.get(i)==1) {
-                val += (Math.pow(2, radix - i));
+                value += (Math.pow(2, radix - i));
             }
         }
         if(signBit.charAt(0)=='1') {
-            val=0-val;
+            value=0-value;
         }
-        return val;
+        return value;
     }
     public static void main(String[] args) {
-        FloatingPointRepresentation test = new FloatingPointRepresentation("1","110","1010",3);
+        BinaryRepresentation test = new BinaryRepresentation("1","110","1010",3);
         System.out.println(test.convertToFloat());
     }
 }
