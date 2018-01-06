@@ -1,6 +1,3 @@
-/**
- * Created by abisa on 1/3/2018.
- */
 public class FloatRepresentation {
     public int expLength;
     public int manLength;
@@ -94,7 +91,7 @@ public class FloatRepresentation {
     }
 
     public String convertToBinaryRep() {
-        return signBit() + " " + exponent() + " " + mantissa();
+        return signBit() + exponent() + mantissa();
     }
     public static void main (String[] args) {
         FloatRepresentation test = new FloatRepresentation(3,4,3,(float)3.125);

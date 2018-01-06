@@ -1,8 +1,5 @@
 import java.util.ArrayList;
 
-/**
- * Created by abisa on 12/29/2017.
- */
 public class BinaryRepresentation {
     public String signBit;
     public String exponent;
