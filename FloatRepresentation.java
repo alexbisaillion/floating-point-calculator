@@ -1,13 +1,13 @@
 public class FloatRepresentation {
     public int expLength;
-    public int manLength;
     public int excess;
+    public int manLength;
     public float floatRep;
 
-    public FloatRepresentation(int el, int ml, int e, float fr) {
+    public FloatRepresentation(int el, int e, int ml, float fr) {
         expLength=el;
-        manLength=ml;
         excess=e;
+        manLength=ml;
         floatRep=fr;
     }
 

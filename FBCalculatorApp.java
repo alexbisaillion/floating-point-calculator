@@ -7,8 +7,8 @@ public class FBCalculatorApp extends Application {
         BinaryToDecimalLayout binToDecPane = new BinaryToDecimalLayout();
         DecimalToBinaryLayout decToBinPane = new DecimalToBinaryLayout();
 
-        Scene binToDecScene = new Scene(binToDecPane, 400, 400);
-        Scene decToBinScene = new Scene(decToBinPane, 400, 400);
+        Scene binToDecScene = new Scene(binToDecPane, 270, 270);
+        Scene decToBinScene = new Scene(decToBinPane, 270, 270);
 
         decToBinPane.decToBin.setOnAction(e -> primaryStage.setScene(decToBinScene));
         decToBinPane.binToDec.setOnAction(e -> primaryStage.setScene(binToDecScene));
