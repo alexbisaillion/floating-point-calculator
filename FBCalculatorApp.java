@@ -7,8 +7,8 @@ public class FBCalculatorApp extends Application {
         BinaryToDecimalLayout binToDecPane = new BinaryToDecimalLayout();
         DecimalToBinaryLayout decToBinPane = new DecimalToBinaryLayout();
 
-        Scene binToDecScene = new Scene(binToDecPane, 270, 270);
-        Scene decToBinScene = new Scene(decToBinPane, 270, 270);
+        Scene binToDecScene = new Scene(binToDecPane, 290, 280);
+        Scene decToBinScene = new Scene(decToBinPane, 290, 280);
 
         decToBinPane.decToBin.setOnAction(e -> primaryStage.setScene(decToBinScene));
         decToBinPane.binToDec.setOnAction(e -> primaryStage.setScene(binToDecScene));
@@ -17,7 +17,6 @@ public class FBCalculatorApp extends Application {
         binToDecPane.binToDec.setOnAction(e -> primaryStage.setScene(binToDecScene));
 
         primaryStage.setTitle("Floating Point Calculator");
-        primaryStage.setResizable(false);
         primaryStage.setScene(binToDecScene);
         primaryStage.show();
     }

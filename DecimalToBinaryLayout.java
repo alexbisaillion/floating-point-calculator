@@ -1,3 +1,4 @@
+import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 
@@ -12,6 +13,7 @@ public class DecimalToBinaryLayout extends GridPane {
     public DecimalToBinaryLayout() {
         setHgap(10);
         setVgap(10);
+        setPadding(new Insets(0,0,10,0));
 
         operationMenu = new Menu("Select Operation");
         menuBar = new MenuBar();
@@ -26,43 +28,53 @@ public class DecimalToBinaryLayout extends GridPane {
         add(menuBar,0,0,4,1);
 
         expLabel = new Label("Exponent Length:");
-        expLabel.setPrefSize(100,30);
+        expLabel.setMinSize(100,30);
+        expLabel.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(expLabel,1,1);
 
         expField = new TextField();
-        expField.setPrefSize(150, 30);
+        expField.setMinSize(150, 30);
+        expField.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(expField,2,1);
 
         excessLabel = new Label("Excess:");
-        excessLabel.setPrefSize(100,30);
+        excessLabel.setMinSize(100,30);
+        excessLabel.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(excessLabel,1,2);
 
         excessField = new TextField();
-        excessField.setPrefSize(150, 30);
+        excessField.setMinSize(150, 30);
+        excessField.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(excessField,2,2);
 
         manLabel = new Label("Mantissa Length:");
-        manLabel.setPrefSize(100,30);
+        manLabel.setMinSize(100,30);
+        manLabel.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(manLabel,1,3);
 
         manField = new TextField();
-        manField.setPrefSize(150, 30);
+        manField.setMinSize(150, 30);
+        manField.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(manField,2,3);
 
         decLabel = new Label("Decimal:");
-        decLabel.setPrefSize(100,30);
+        decLabel.setMinSize(100,30);
+        decLabel.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(decLabel,1,4);
 
         decField = new TextField();
-        decField.setPrefSize(150, 30);
+        decField.setMinSize(150, 30);
+        decField.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(decField,2,4);
 
         compute = new Button("COMPUTE");
-        compute.setPrefSize(260,30);
+        compute.setMinSize(260,30);
+        compute.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         add(compute,1,5,2,1);
 
         resultField = new TextField();
-        resultField.setPrefSize(260,30);
+        resultField.setMinSize(260,30);
+        resultField.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         resultField.setDisable(true);
         add(resultField,1,6,2,1);
     }
