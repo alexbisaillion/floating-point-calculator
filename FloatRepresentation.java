@@ -1,8 +1,8 @@
 public class FloatRepresentation {
-    public int expLength;
-    public int excess;
-    public int manLength;
-    public float floatRep;
+    private int expLength;
+    private int excess;
+    private int manLength;
+    private float floatRep;
 
     public FloatRepresentation(int el, int e, int ml, float fr) {
         expLength=el;
@@ -11,14 +11,14 @@ public class FloatRepresentation {
         floatRep=fr;
     }
 
-    public char signBit() {
+    private char signBit() {
         if(floatRep<0) {
             return '1';
         }
         return '0';
     }
 
-    public String convertIntegerPart() {
+    private String convertIntegerPart() {
         int temp = (int)floatRep;
         String binaryRep = "";
         while(temp>0) {
@@ -27,7 +27,7 @@ public class FloatRepresentation {
         }
         return binaryRep;
     }
-    public String convertFractionalPart() {
+    private String convertFractionalPart() {
         float temp = floatRep - (int)floatRep;
         String binaryRep = "";
         while((temp-(int)temp)!=0) {
@@ -38,7 +38,7 @@ public class FloatRepresentation {
         return binaryRep;
     }
 
-    public int radix() {
+    private int radix() {
         String integerPart = convertIntegerPart();
         String fractionalPart = convertFractionalPart();
         String combo = integerPart + fractionalPart;
@@ -56,7 +56,7 @@ public class FloatRepresentation {
         return radix;
     }
 
-    public String exponent() {
+    private String exponent() {
         int temp = radix();
         String binaryRep = "";
         while(temp>0) {
@@ -71,7 +71,7 @@ public class FloatRepresentation {
         return binaryRep;
     }
 
-    public String mantissa() {
+    private String mantissa() {
         String combo = convertIntegerPart() + convertFractionalPart();
         String[] strArray = combo.split("");
         int count = 0;
@@ -90,7 +90,7 @@ public class FloatRepresentation {
         return binaryRep;
     }
 
-    public String convertToBinaryRep() {
+    protected String convertToBinaryRep() {
         return signBit() + exponent() + mantissa();
     }
     public static void main (String[] args) {
