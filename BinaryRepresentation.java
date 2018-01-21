@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class BinaryRepresentation {
-    public String signBit;
-    public String exponent;
-    public String mantissa;
-    public int excess;
+    private String signBit;
+    private String exponent;
+    private String mantissa;
+    private int excess;
 
     public BinaryRepresentation(String sb, String exp, String man, int exc) {
         signBit=sb;
@@ -13,7 +13,7 @@ public class BinaryRepresentation {
         excess=exc;
     }
 
-    public int radix() {
+    private int radix() {
         String[] strArray = exponent.split("");
         int expVal = 0;
         for (int i = 0; i <exponent.length(); i++) {
@@ -25,7 +25,7 @@ public class BinaryRepresentation {
         return expVal;
     }
 
-    public ArrayList<Integer> buildMantissa() {
+    private ArrayList<Integer> buildMantissa() {
         ArrayList<Integer> manArray = new ArrayList<Integer>();
         manArray.add(1);
         for(int i = 0; i<mantissa.length(); i++) {
@@ -39,7 +39,7 @@ public class BinaryRepresentation {
         return manArray;
     }
 
-    public ArrayList<Integer> adjustMantissa(ArrayList<Integer> manArray, int radix) {
+    private ArrayList<Integer> adjustMantissa(ArrayList<Integer> manArray, int radix) {
         if(radix<0) {
             for(int i = 0; i>radix; i--) {
                 manArray.add(0,0);
@@ -55,7 +55,7 @@ public class BinaryRepresentation {
         return manArray;
     }
 
-    public float convertToFloat() {
+    protected float convertToFloat() {
         float value = 0;
         int radix = radix();
         ArrayList<Integer> manArray = buildMantissa();
@@ -71,6 +71,7 @@ public class BinaryRepresentation {
         }
         return value;
     }
+
     public static void main(String[] args) {
         BinaryRepresentation test = new BinaryRepresentation("1","110","1010",3);
         System.out.println(test.convertToFloat());

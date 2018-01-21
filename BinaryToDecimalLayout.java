@@ -1,3 +1,5 @@
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
@@ -77,5 +79,15 @@ public class BinaryToDecimalLayout extends GridPane {
         resultField.setPrefSize(Integer.MAX_VALUE,Integer.MAX_VALUE);
         resultField.setDisable(true);
         add(resultField,1,6,2,1);
+
+        compute.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent actionEvent) {
+                if(bitField.getText().length() > 0 && expField.getText().length() > 0 && excessField.getText().length() > 0 && manField.getText().length() > 0) {
+                    BinaryRepresentation input = new BinaryRepresentation(bitField.getText(),expField.getText(),manField.getText(),Integer.parseInt(excessField.getText()));
+                    resultField.setText(Float.toString(input.convertToFloat()));
+                }
+            }
+        });
+
     }
 }
